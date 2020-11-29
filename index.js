@@ -44,7 +44,7 @@ app.post("/",
 app.use('/download', express.static('files'))
 
 // Get port from config
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
 app.listen(port, function () {
   console.log(`Server started on port: ${port}`);

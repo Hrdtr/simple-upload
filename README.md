@@ -2,6 +2,24 @@
 
 Dead simple NodeJS file upload server.
 
+## Setup
+
+```bash
+git clone https://github.com/Hrdtr/simple-upload.git
+cd simple-upload
+npm install
+node index.js
+```
+
+Or start using Docker
+
+```bash
+docker run -p 3000:3000 \
+  -e PORT=3000
+  -v ${pwd}/files:/usr/src/app/files \
+  registry.cognitive.id/simple-upload:latest
+```
+
 ## Usage
 
 ### Uploading a file
