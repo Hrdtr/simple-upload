@@ -36,7 +36,7 @@ app.post("/",
     }
     res.status(200).send({
       success: 1,
-      downloadUrl: req.headers.host + '/download/' + req.file.filename
+      downloadUrl: req.protocol + '://' + req.get('host') + '/download/' + req.file.filename
     });
   }
 );
