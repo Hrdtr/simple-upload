@@ -1,0 +1,31 @@
+name: Simple Upload CD
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: Build 👨🏻‍💻
+        run: docker build -t simple-upload .
+
+      - name: Tags 🏷️
+        run: |
+          docker tag simple-upload registry.cognitive.id/simple-upload:${{ github.sha }}
+          docker tag simple-upload registry.cognitive.id/simple-upload:latest
+      - name: Push 🚚
+        run: |
+          docker push registry.cognitive.id/simple-upload:${{ github.sha }}
+          docker push registry.cognitive.id/simple-upload:latest
